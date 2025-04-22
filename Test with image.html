@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GenGuide</title>
+    <link rel="icon" href="https://i.pinimg.com/736x/dd/d2/91/ddd291ac90bab7bf383be671ab46adca.jpg" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        .background {
+            background-image: url("https://images.alphacoders.com/134/1343095.png");
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            filter: blur(10px);
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            font-size: 2em;
+        }
+
+        .content {
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content img {
+            width: 40%;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            font-size: 1.2em;
+        }
+
+        .character-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .character-list li {
+            background-color: rgba(94, 44, 112, 0.85);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="background"></div>
+
+<header>
+    Welcome to Genshin Guide Site
+</header>
+
+<div class="content">
+    <img src="https://images5.alphacoders.com/133/1334085.jpeg" alt="Genshin Impact Logo">
+    <h1>Your Guide To Build Every Character In The Game</h1>
+    <input class="search-bar" type="text" id="searchBar" onkeyup="searchCharacter()" placeholder="Search for a character...">
+    <ul class="character-list" id="characterList"></ul>
+</div>
+
+<footer>
+    GenGuide - A Genshin Impact Character Guide
+</footer>
+
+<script>
+    const characters = [
+        "The Traveler", "Albedo", "Alhaitham", "Aloy", "Amber", "Arataki Itto", "Arlecchino",
+        "Kamisato Ayaka", "Kamisato Ayato", "Baizhu", "Barbara", "Beidou", "Bennett", "Candace", "Charlotte", "Chasca", "chevreuse", "Chiori", "cytlali", "Kaveh", "Kenich", "Kuki Shinobu", "Lan Yan", "Lynette", "Lyney", "Mavuika", "Mika", "Mualani", "Navia", "Neuvillette", "Ororon", "Sethos", "Sigewinne", "Varesa", "Wriothesley", "Xiangling", "Xianyun", "Xilonen", "Yao Yao", "Yamimizuki Mizuki", "Skirk",                     
+        "Clorinde", "Childe", "emilie", "Escoffier", "Freminet", "Furina", "Gaming", "IanSan", "Ifa", "Kachina", "Kaedhara Kazuha",
+        "Chongyun", "Collei", "Cyno", "Dainsleif", "Dehya", "Diluc", "Diona", "Dori", "Eula", 
+        "Faruzan", "Fischl", "Ganyu", "Gorou", "Shikanoin Heizou", "Hutao", "Jean", "Kaeya", "Kazuha", 
+        "Keqing", "Kirara", "Klee", "Kujou Sara", "Layla", "Lisa", "Mona", "Nahida", "Nilou", 
+        "Ningguang", "Noelle", "Qiqi", "Raiden Shogun", "Razor", "Rosaria", "Sangonomiya Kokomi", 
+        "Sayu", "Shenhe", "Sucrose", "Tartaglia", "Thoma", "Tighnari", "Venti", "Wanderer", 
+        "Xiao", "Xingqiu", "Xinyan", "Yae Miko", "Yanfei", "Yelan", "Yoimiya", "Yun Jin", "Zhongli"
+    ];
+
+    function searchCharacter() {
+        const input = document.getElementById('searchBar').value.toUpperCase();
+        const characterList = document.getElementById('characterList');
+        characterList.innerHTML = "";
+
+        if (input.length > 0) {
+            const filteredCharacters = characters.filter(character => 
+                character.toUpperCase().includes(input)
+            );
+
+            filteredCharacters.forEach(character => {
+                const li = document.createElement('li');
+                li.textContent = character;
+                characterList.appendChild(li);
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
